@@ -2,7 +2,7 @@
 
 library('RSQLite')
 
-connection <- dbConnect(drv='SQLite', dbname='../weather.sqlite')
+connection <- dbConnect(drv='SQLite', dbname='weather.sqlite')
 alltables <- dbListTables(connection)
 
 dwd_rdm_data <- dbGetQuery(connection, 'SELECT dwdweatherdata.timestamp AS timestamp, dwdweatherdata.temperature AS dwdtmp, dwdweatherdata.humidity AS dwdhum, dwdweatherdata.pressure as dwdpres, rdmweatherdata.temperature AS rdmtmp, rdmweatherdata.humidity AS rdmhum, rdmweatherdata.pressure as rdmpres FROM dwdweatherdata INNER JOIN rdmweatherdata ON dwdweatherdata.timestamp = rdmweatherdata.timestamp')
