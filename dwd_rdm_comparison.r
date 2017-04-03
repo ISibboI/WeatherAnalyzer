@@ -9,7 +9,7 @@ dwd_rdm_data <- dbGetQuery(connection, 'SELECT dwdweatherdata.timestamp AS times
 
 x11()
 plot(dwd_rdm_data$dwdtmp, dwd_rdm_data$rdmtmp, xlab='Temperature measured by DWD', ylab='Temperature measured by RDM private weather station')
-abline(lm(dwd_rdm_data$dwdtmp ~ dwd_rdm_data$rdmtmp), col='red')
+abline(lm(dwd_rdm_data$rdmtmp ~ dwd_rdm_data$dwdtmp), col='red')
 abline(0, 1, col='green')
 
 while (!is.null(dev.list())) Sys.sleep(1)
